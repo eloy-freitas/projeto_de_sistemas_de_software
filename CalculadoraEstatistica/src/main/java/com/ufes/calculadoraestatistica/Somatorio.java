@@ -10,14 +10,14 @@ import java.util.List;
  *
  * @author eloy
  */
-public class Somatorio implements Operacao {
+public class Somatorio implements MetodoEstatistico {
     @Override
-    public final double calcula(List<Double> numeros){
+    public final Resultado calcular(List<Double> numeros){
         double total = 0;
         for(int i=0; i < numeros.size(); i++){
             total += numeros.get(i);
         }
-        return total;
+        return new Resultado("Somatorio", total);
     }
     
 }

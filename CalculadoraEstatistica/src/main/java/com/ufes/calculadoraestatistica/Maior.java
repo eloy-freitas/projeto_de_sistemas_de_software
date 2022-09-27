@@ -11,11 +11,11 @@ import java.util.List;
  *
  * @author eloy
  */
-public class Maior implements Operacao{
+public class Maior implements MetodoEstatistico{
 
     @Override
-    public double calcula(List<Double> numeros) {
-        return Collections.max(numeros);
+    public Resultado calcular(List<Double> numeros) {
+        return new Resultado("Maior", Collections.max(numeros));
     }
     
 }

@@ -19,19 +19,18 @@ public class Principal {
                         10.0, 5.0, 6.0, 7.0, 8.0, 2.0
                 ));
         
+        Calculadora calculadora = new Calculadora();
         
-        double resultado = new CalculadoraEstatistica().calcular(numeros, new DesvioPadrao());
-        System.out.println("Desvio padrão: " + resultado);
-        resultado = new CalculadoraEstatistica().calcular(numeros, new Variancia());
-        System.out.println("Variância: " + resultado);
-        resultado = new CalculadoraEstatistica().calcular(numeros, new Menor());
-        System.out.println("Menor: " + resultado);
-        resultado = new CalculadoraEstatistica().calcular(numeros, new Maior());
-        System.out.println("Maior: " + resultado);
-        resultado = new CalculadoraEstatistica().calcular(numeros, new Somatorio());
-        System.out.println("Somatório: " + resultado);
-        resultado = new CalculadoraEstatistica().calcular(numeros, new SomaAoQuadrado());
-        System.out.println("Soma ao Quadrado: " + resultado);
-
+        ResultadoEstatisticaDescritiva resultados = new ResultadoEstatisticaDescritiva(numeros);
+        
+        calculadora.calcular(resultados);
+        
+        System.out.println("Data -> " + resultados.getData());
+        System.out.println("Resultados: ");
+        
+        for(int i=0; i < resultados.getResultados().size(); i++) {
+        	System.out.print("Nome -> " + resultados.getResultados().get(i).getNome() + 
+        			" Resultado -> " + resultados.getResultados().get(i).getValor() + "\n");
+        }
     }
 }

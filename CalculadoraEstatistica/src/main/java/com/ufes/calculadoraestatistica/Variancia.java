@@ -10,18 +10,18 @@ import java.util.List;
  *
  * @author eloy
  */
-public class Variancia implements Operacao{
+public class Variancia implements MetodoEstatistico{
 
     @Override
-    public double calcula(List<Double> numeros) {
-        double somatorio = new Somatorio().calcula(numeros);
-        double somaAoQuadrado = new SomaAoQuadrado().calcula(numeros);
+    public Resultado calcular(List<Double> numeros) {
+        Resultado somatorio = new Somatorio().calcular(numeros);
+        Resultado somaAoQuadrado = new SomaAoQuadrado().calcular(numeros);
         int size = numeros.size();
         double p1 = 1 / (size - 1);
         
-        double p2 = somaAoQuadrado - Math.pow(somatorio, 2) / size;
+        double p2 = somaAoQuadrado.getValor() - Math.pow(somatorio.getValor(), 2) / size;
         
-        return p1 * p2;
+        return new Resultado("Variancia", p1 * p2);
     }
     
     

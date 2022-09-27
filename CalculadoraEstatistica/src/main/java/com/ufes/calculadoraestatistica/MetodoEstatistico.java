@@ -10,6 +10,6 @@ import java.util.List;
  *
  * @author eloy
  */
-public interface Operacao {
-    double calcula(List<Double> numeros);
+public interface MetodoEstatistico {
+    Resultado calcular(List<Double> numeros);
 }

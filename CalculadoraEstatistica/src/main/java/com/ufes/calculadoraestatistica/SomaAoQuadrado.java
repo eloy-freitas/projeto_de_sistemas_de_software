@@ -10,17 +10,17 @@ import java.util.List;
  *
  * @author eloy
  */
-public class SomaAoQuadrado implements Operacao{
+public class SomaAoQuadrado implements MetodoEstatistico{
 
     @Override
-    public double calcula(List<Double> numeros) {
+    public Resultado calcular(List<Double> numeros) {
         double somaAoQuadrado = 0;
         
         for(int i = 0; i< numeros.size(); i++){
             somaAoQuadrado += Math.pow(numeros.get(i), 2);
         }
         
-        return somaAoQuadrado;
+        return new Resultado("Soma ao Quadrado", somaAoQuadrado);
     }
     
 }

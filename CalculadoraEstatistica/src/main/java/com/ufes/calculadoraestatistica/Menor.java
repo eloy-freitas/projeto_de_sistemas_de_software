@@ -11,11 +11,11 @@ import java.util.List;
  *
  * @author eloy
  */
-public class Menor implements Operacao{
+public class Menor implements MetodoEstatistico{
 
     @Override
-    public double calcula(List<Double> numeros) {
-        return Collections.min(numeros);
+    public Resultado calcular(List<Double> numeros) {
+        return new Resultado("Menor", Collections.min(numeros));
     }
     
 }

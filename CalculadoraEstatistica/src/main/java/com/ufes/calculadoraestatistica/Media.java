@@ -10,12 +10,12 @@ import java.util.List;
  *
  * @author eloy
  */
-public class Media implements Operacao{
+public class Media implements MetodoEstatistico{
     
     @Override
-    public double calcula(List<Double> numeros) {
-        double soma = new Somatorio().calcula(numeros);
-        return soma / numeros.size();
+    public Resultado calcular(List<Double> numeros) {
+        Resultado r = new Somatorio().calcular(numeros);
+        return new Resultado("Media", r.getValor() / numeros.size());
     }
     
 }
