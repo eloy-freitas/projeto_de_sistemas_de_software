@@ -1,8 +1,20 @@
 package com.ufes.ordenacao.presenter;
 
+import com.ufes.ordenacao.model.LeitorDeArquivo;
 import com.ufes.ordenacao.view.OrdenacaoView;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+import javax.swing.JFileChooser;
+import javax.swing.ListModel;
 
 /**
  *
@@ -10,10 +22,15 @@ import java.util.List;
  */
 public class PrincipalPresenter {
     private OrdenacaoView ordenacaoView;
+    private String path;
+    private LeitorDeArquivo leitorDeArquivo;
+    private List<Integer> numerosDesordenados;
+    private DefaultListModel listModelDesordenados;
     
     public PrincipalPresenter(){
         this.ordenacaoView = new OrdenacaoView();
-        
+        this.path = null;
+        this.listModelDesordenados = new DefaultListModel();
         iniciarView();
         setCbmMetodo();
         this.ordenacaoView.setVisible(true);
@@ -37,6 +54,21 @@ public class PrincipalPresenter {
         this.ordenacaoView.getCmbMetodo().removeAllItems();
         this.ordenacaoView.getLstOrdenados().removeAll();
         this.ordenacaoView.getRbtnCrescente().setSelected(true);
+        this.ordenacaoView.getBtnOrdenar().setEnabled(false);
+        this.ordenacaoView.getBtnCarregarArquivo().addActionListener(e -> {
+            selecionarArquivo();
+            if (this.path != null){
+                try {
+                    this.leitorDeArquivo = new LeitorDeArquivo(this.path);
+                    this.numerosDesordenados = this.leitorDeArquivo.getNumerosDesordenados();
+                    setListModel(this.numerosDesordenados);
+                    this.ordenacaoView.getLstSemOrdem().setModel(this.listModelDesordenados);
+                    this.ordenacaoView.getBtnOrdenar().setEnabled(true);
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException("Erro: arquivo com formato inválido");
+                }
+            } 
+        });
     }
     
     private void setMetodoOrdenacao(){
@@ -47,5 +79,24 @@ public class PrincipalPresenter {
         //definir se a ordenação vai ser crescene ou decresente 
         //a partir do radioButton
         //deixar crescente por padrão
+    }
+    
+    private void selecionarArquivo(){
+        JFileChooser chooser = new JFileChooser();
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        int result = chooser.showOpenDialog(this.ordenacaoView);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            this.path = chooser.getSelectedFile().getAbsolutePath();
+         
+        } else {
+            // user changed their mind
+        }
+
+    }
+    
+    private void setListModel(List<Integer> numerosDesordenados){
+        for(int n: numerosDesordenados){
+            this.listModelDesordenados.addElement(n);
+        }
     }
 }
