@@ -44,7 +44,7 @@ public class OrdenacaoView extends javax.swing.JFrame {
         rbtnCrescente = new javax.swing.JRadioButton();
         rbtnDecrescente = new javax.swing.JRadioButton();
         btnOrdenar = new javax.swing.JButton();
-        lblDescricaoTempo = new javax.swing.JLabel();
+        lblTempoRotulo = new javax.swing.JLabel();
         lblTempo = new javax.swing.JLabel();
         lblOrdenados = new javax.swing.JLabel();
         scrpSemOrdem = new javax.swing.JScrollPane();
@@ -72,7 +72,7 @@ public class OrdenacaoView extends javax.swing.JFrame {
 
         btnOrdenar.setText("Ordenar");
 
-        lblDescricaoTempo.setText("Tempo:");
+        lblTempoRotulo.setText("Tempo:");
 
         lblTempo.setText("0");
 
@@ -113,7 +113,7 @@ public class OrdenacaoView extends javax.swing.JFrame {
                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
                         .addComponent(btnCarregarArquivo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblDescricaoTempo)
+                        .addComponent(lblTempoRotulo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblTempo)
                         .addGap(226, 226, 226))))
@@ -122,9 +122,9 @@ public class OrdenacaoView extends javax.swing.JFrame {
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSemOrdem)
-                    .addComponent(lblOrdenados))
+                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSemOrdem, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblOrdenados, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -147,7 +147,7 @@ public class OrdenacaoView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblDescricaoTempo)
+                        .addComponent(lblTempoRotulo)
                         .addComponent(lblTempo))
                     .addComponent(btnCarregarArquivo))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -268,6 +268,12 @@ public class OrdenacaoView extends javax.swing.JFrame {
         return scrpSemOrdem;
     }
 
+    public JLabel getLblTempoRotulo() {
+        return lblTempoRotulo;
+    }
+    
+    
+
    
     
 
@@ -278,12 +284,12 @@ public class OrdenacaoView extends javax.swing.JFrame {
     private javax.swing.JButton btnOrdenar;
     private javax.swing.JComboBox<String> cmbMetodo;
     private javax.swing.ButtonGroup grpOrdem;
-    private javax.swing.JLabel lblDescricaoTempo;
     private javax.swing.JLabel lblMetodoOrdenacao;
     private javax.swing.JLabel lblOrdem;
     private javax.swing.JLabel lblOrdenados;
     private javax.swing.JLabel lblSemOrdem;
     private javax.swing.JLabel lblTempo;
+    private javax.swing.JLabel lblTempoRotulo;
     private javax.swing.JList<String> lstOrdenados;
     private javax.swing.JList<String> lstSemOrdem;
     private javax.swing.JPanel pnlPrincipal;
