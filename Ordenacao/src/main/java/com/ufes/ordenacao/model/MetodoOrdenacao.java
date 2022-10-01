@@ -17,9 +17,9 @@ public abstract class MetodoOrdenacao {
         this.nome = nome;
     }
     
-    public abstract List<Integer> ordenarCrescente(List<Integer> valores);
+    public abstract Resultado ordenarCrescente(List<Integer> valores);
     
-   public abstract List<Integer> ordenarDecrescente(List<Integer> valores);
+   public abstract Resultado ordenarDecrescente(List<Integer> valores);
 
     public String getNome() {
         return nome;

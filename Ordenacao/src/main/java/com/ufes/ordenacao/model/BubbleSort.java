@@ -5,7 +5,8 @@
 package com.ufes.ordenacao.model;
 
 import java.util.List;
-
+import java.time.Instant;
+import java.time.Duration;
 /**
  *
  * @author eloy
@@ -19,7 +20,8 @@ public class BubbleSort extends MetodoOrdenacao{
 
     
     @Override
-    public List<Integer> ordenarCrescente(List<Integer> valores) {
+    public Resultado ordenarCrescente(List<Integer> valores) {
+       Instant start = Instant.now();
        int tamanho = valores.size();
        int aux = 0;
        for (int i = 0; i < tamanho; i++){
@@ -32,11 +34,17 @@ public class BubbleSort extends MetodoOrdenacao{
                 }
            }
        }
-       return valores;
+       Instant end = Instant.now();
+       Duration tempoExecuacao = Duration.between(
+            start,
+            end
+       );
+       return new Resultado(valores, tempoExecuacao);
     }
 
     @Override
-    public List<Integer> ordenarDecrescente(List<Integer> valores) {
+    public Resultado ordenarDecrescente(List<Integer> valores) {
+       Instant start = Instant.now();
        int tamanho = valores.size() - 1;
        int aux = 0;
        for (int i = tamanho; i > 0 ; i--){
@@ -50,7 +58,12 @@ public class BubbleSort extends MetodoOrdenacao{
                 }
            }
        }
-       return valores;
+       Instant end = Instant.now();
+       Duration tempoExecuacao = Duration.between(
+            start,
+            end
+       );
+       return new Resultado(valores, tempoExecuacao);
     }
 
   

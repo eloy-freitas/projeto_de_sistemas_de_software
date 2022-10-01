@@ -4,21 +4,14 @@ import com.ufes.ordenacao.model.BubbleSort;
 import com.ufes.ordenacao.model.LeitorDeArquivo;
 import com.ufes.ordenacao.model.MetodoOrdenacao;
 import com.ufes.ordenacao.model.MetodosOrdenacaoCollection;
+import com.ufes.ordenacao.model.Resultado;
 import com.ufes.ordenacao.view.OrdenacaoView;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JList;
-import javax.swing.ListModel;
 
 /**
  *
@@ -34,6 +27,7 @@ public class PrincipalPresenter {
     private DefaultListModel listModelOrdenados;
     private MetodosOrdenacaoCollection metodosOrdenacao;
     private MetodoOrdenacao metodo;
+    private Resultado resultado;
     
     public PrincipalPresenter(){
         iniciarView();
@@ -56,20 +50,26 @@ public class PrincipalPresenter {
             if (this.path != null){
                 try {
                     this.numerosSemOrdem = new ArrayList<>();
+                    
                     removeElementsJlist(
-                            this.ordenacaoView.getLstSemOrdem()
+                        this.ordenacaoView.getLstSemOrdem()
                     );
                     
                     this.leitorDeArquivo = new LeitorDeArquivo(this.path);
+                    
                     this.numerosSemOrdem = this.leitorDeArquivo.getNumerosSemOrdem();
+                    
                     setListModel(
-                            this.numerosSemOrdem, 
-                            this.listModelSemOrdem
+                        this.numerosSemOrdem, 
+                        this.listModelSemOrdem
                     );
+                    
                     this.ordenacaoView.
-                            getLstSemOrdem().
-                            setModel(this.listModelSemOrdem);
+                        getLstSemOrdem().
+                        setModel(this.listModelSemOrdem);
+                    
                     this.ordenacaoView.getBtnOrdenar().setEnabled(true);
+                    
                 } catch (FileNotFoundException ex) {
                     throw new RuntimeException(
                             "Erro: arquivo com formato inválido"
@@ -82,23 +82,35 @@ public class PrincipalPresenter {
     private void setBtnOrdenar(){
         this.ordenacaoView.getBtnOrdenar().addActionListener(e -> {
             this.numerosOrdenados = new ArrayList<>();
+            
             removeElementsJlist(
                 this.ordenacaoView.getLstOrdenados()
             );
-            this.numerosOrdenados = ordenar(
+            
+            this.ordenacaoView.getLblTempo().setText("0");
+            
+            this.resultado = ordenar(
                 this.numerosSemOrdem,
                 this.metodo
             );
+            
+            this.numerosOrdenados = this.resultado.getNumeros();
+            
+            this.ordenacaoView.
+                    getLblTempo().
+                    setText(this.resultado.getTempo());
+            
+            
             setListModel(
                 this.numerosOrdenados, 
                 this.listModelOrdenados
             );
+            
             this.ordenacaoView.
                 getLstOrdenados().
                 setModel(this.listModelOrdenados);
         });
     }
-    
     
     private void iniciarView(){
         this.numerosSemOrdem = new ArrayList<>();
@@ -115,16 +127,6 @@ public class PrincipalPresenter {
         this.ordenacaoView.getLstOrdenados().removeAll();
         this.ordenacaoView.getRbtnCrescente().setSelected(true);
         this.ordenacaoView.getBtnOrdenar().setEnabled(false);
-    }
-    
-    private void setMetodoOrdenacao(){
-        //definir a variável método com o que foi selecionado no cmbMetodo
-    }
-    
-    private void setTipoOrdenacao(){
-        //definir se a ordenação vai ser crescene ou decresente 
-        //a partir do radioButton
-        //deixar crescente por padrão
     }
     
     private void selecionarArquivo(){
@@ -149,7 +151,7 @@ public class PrincipalPresenter {
         jlist.removeAll();
     }
     
-    private List<Integer> ordenar(List<Integer> numerosSemOrdem, MetodoOrdenacao metodo){
+    private Resultado ordenar(List<Integer> numerosSemOrdem, MetodoOrdenacao metodo){
         if (this.ordenacaoView.getRbtnCrescente().isSelected())
             return metodo.ordenarCrescente(numerosSemOrdem);
         else
