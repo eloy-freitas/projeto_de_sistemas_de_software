@@ -35,6 +35,24 @@ public class BubbleSort extends MetodoOrdenacao{
        return valores;
     }
 
+    @Override
+    public List<Integer> ordenarDecrescente(List<Integer> valores) {
+       int tamanho = valores.size() - 1;
+       int aux = 0;
+       for (int i = tamanho; i > 0 ; i--){
+           for (int j = tamanho; j > 0 ; j--){
+               if (valores.get(j).compareTo(valores.get(j-1)) > 0)
+                {
+                    
+                    aux = valores.get(j);
+                    valores.set(j,valores.get(j-1) );
+                    valores.set(j-1, aux);
+                }
+           }
+       }
+       return valores;
+    }
+
   
     
 }

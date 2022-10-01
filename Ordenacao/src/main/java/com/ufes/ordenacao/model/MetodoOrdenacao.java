@@ -19,7 +19,7 @@ public abstract class MetodoOrdenacao {
     
     public abstract List<Integer> ordenarCrescente(List<Integer> valores);
     
-   //public abstract int[] ordenarDecrescente(int[] valores);
+   public abstract List<Integer> ordenarDecrescente(List<Integer> valores);
 
     public String getNome() {
         return nome;
