@@ -82,7 +82,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="btnCarregarArquivo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="lblDescricaoTempo" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTempoRotulo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="lblTempo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="226" max="-2" attributes="0"/>
@@ -95,7 +95,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblSemOrdem" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="lblOrdenados" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -125,7 +125,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblDescricaoTempo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTempoRotulo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblTempo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="btnCarregarArquivo" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -192,7 +192,7 @@
             <Property name="text" type="java.lang.String" value="Ordenar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblDescricaoTempo">
+        <Component class="javax.swing.JLabel" name="lblTempoRotulo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Tempo:"/>
           </Properties>

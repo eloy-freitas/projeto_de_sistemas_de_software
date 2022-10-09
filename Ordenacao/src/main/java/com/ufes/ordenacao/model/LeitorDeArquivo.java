@@ -16,19 +16,19 @@ import java.util.Scanner;
  */
 public class LeitorDeArquivo {
     private File arquivo;
-    private List<Integer> numerosDesordenados;
+    private List<Integer> numerosSemOrdem;
     
     public LeitorDeArquivo(String path) {
         this.arquivo = new File(path);
-        this.numerosDesordenados = new ArrayList<>();
+        this.numerosSemOrdem = new ArrayList<>();
     }
     
-    public List<Integer> getNumerosDesordenados() throws FileNotFoundException{
+    public List<Integer> getNumerosSemOrdem() throws FileNotFoundException{
         Scanner scanner = new Scanner(this.arquivo);
         while(scanner.hasNextInt()){
-            this.numerosDesordenados.add(scanner.nextInt());
+            this.numerosSemOrdem.add(scanner.nextInt());
         }
-        return this.numerosDesordenados;
+        return this.numerosSemOrdem;
     }
     
 }

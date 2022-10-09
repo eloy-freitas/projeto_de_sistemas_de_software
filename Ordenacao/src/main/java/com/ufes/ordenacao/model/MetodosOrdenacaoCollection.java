@@ -17,6 +17,7 @@ public class MetodosOrdenacaoCollection {
     public MetodosOrdenacaoCollection() {
         this.metodos = new ArrayList<>();
         this.metodos.add(new BubbleSort());
+        this.metodos.add(new SelectionSort());
     }
 
     public List<MetodoOrdenacao> getMetodos() {
