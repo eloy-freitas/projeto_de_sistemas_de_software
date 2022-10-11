@@ -38,7 +38,7 @@ public class Funcionario {
     public void acrescentarFalta(LocalDate mes){
         try {
            for(Falta f : this.faltas)
-               if(f.getMes().equals(mes))
+               if(f.getData().equals(mes))
                    f.addFalta();
         } catch (Exception e) {
             throw new RuntimeException("Erro: mês inválido!");
@@ -68,7 +68,6 @@ public class Funcionario {
     public void setDistanciaTrabalho(double distanciaTrabalho) {
         this.distanciaTrabalho = distanciaTrabalho;
     }
-    
     
     public String getNome() {
         return nome;

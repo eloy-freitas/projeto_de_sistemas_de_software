@@ -12,11 +12,11 @@ import java.time.LocalDate;
  */
 public class Falta {
     private int quantidade;
-    private LocalDate mes;
+    private LocalDate data;
 
-    public Falta(LocalDate mes) {
+    public Falta(LocalDate data) {
         this.quantidade = 0;
-        this.mes = mes;
+        this.data = data;
     }
     
     
@@ -32,8 +32,8 @@ public class Falta {
         return quantidade;
     }
 
-    public LocalDate getMes() {
-        return mes;
+    public LocalDate getData() {
+        return data;
     }
     
     
