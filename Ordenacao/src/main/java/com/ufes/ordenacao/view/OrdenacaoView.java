@@ -4,6 +4,7 @@
  */
 package com.ufes.ordenacao.view;
 
+import java.awt.List;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -47,10 +48,8 @@ public class OrdenacaoView extends javax.swing.JFrame {
         lblTempoRotulo = new javax.swing.JLabel();
         lblTempo = new javax.swing.JLabel();
         lblOrdenados = new javax.swing.JLabel();
-        scrpSemOrdem = new javax.swing.JScrollPane();
-        lstSemOrdem = new javax.swing.JList<>();
-        scrpOrdenado = new javax.swing.JScrollPane();
-        lstOrdenados = new javax.swing.JList<>();
+        lstSemOrdem = new java.awt.List();
+        lstOrdenados = new java.awt.List();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,10 +77,6 @@ public class OrdenacaoView extends javax.swing.JFrame {
 
         lblOrdenados.setText("Elementos ordenados");
 
-        scrpSemOrdem.setViewportView(lstSemOrdem);
-
-        scrpOrdenado.setViewportView(lstOrdenados);
-
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
         pnlPrincipal.setLayout(pnlPrincipalLayout);
         pnlPrincipalLayout.setHorizontalGroup(
@@ -90,47 +85,43 @@ public class OrdenacaoView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                        .addComponent(scrpSemOrdem, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblMetodoOrdenacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblOrdem)
-                                    .addComponent(rbtnCrescente)
-                                    .addComponent(rbtnDecrescente))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(btnOrdenar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbMetodo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(scrpOrdenado, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
                         .addComponent(lblSemOrdem, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblOrdenados)
-                        .addGap(155, 155, 155))
-                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                        .addComponent(btnCarregarArquivo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblTempoRotulo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblTempo)
-                        .addGap(226, 226, 226))))
+                        .addGap(114, 114, 114))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincipalLayout.createSequentialGroup()
+                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                                .addComponent(btnCarregarArquivo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblTempoRotulo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblTempo))
+                            .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                                .addComponent(lstSemOrdem, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblMetodoOrdenacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblOrdem)
+                                            .addComponent(rbtnCrescente)
+                                            .addComponent(rbtnDecrescente))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(btnOrdenar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmbMetodo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(38, 38, 38)
+                                .addComponent(lstOrdenados, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
         );
         pnlPrincipalLayout.setVerticalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSemOrdem)
+                    .addComponent(lblOrdenados))
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSemOrdem, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblOrdenados, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(scrpOrdenado, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(scrpSemOrdem, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
                         .addGap(60, 60, 60)
                         .addComponent(lblMetodoOrdenacao)
@@ -143,7 +134,13 @@ public class OrdenacaoView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rbtnDecrescente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnOrdenar)))
+                        .addComponent(btnOrdenar))
+                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lstSemOrdem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lstOrdenados, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -240,13 +237,16 @@ public class OrdenacaoView extends javax.swing.JFrame {
         return lblTempo;
     }
 
-    public JList<String> getLstOrdenados() {
+    public List getLstOrdenados() {
         return lstOrdenados;
     }
 
-    public JList<String> getLstSemOrdem() {
+
+    public List getLstSemOrdem() {
         return lstSemOrdem;
     }
+
+   
 
     public JRadioButton getRbtnCrescente() {
         return rbtnCrescente;
@@ -260,13 +260,6 @@ public class OrdenacaoView extends javax.swing.JFrame {
         return grpOrdem;
     }
 
-    public JScrollPane getScrpOrdenado() {
-        return scrpOrdenado;
-    }
-
-    public JScrollPane getScrpSemOrdem() {
-        return scrpSemOrdem;
-    }
 
     public JLabel getLblTempoRotulo() {
         return lblTempoRotulo;
@@ -289,12 +282,10 @@ public class OrdenacaoView extends javax.swing.JFrame {
     private javax.swing.JLabel lblSemOrdem;
     private javax.swing.JLabel lblTempo;
     private javax.swing.JLabel lblTempoRotulo;
-    private javax.swing.JList<String> lstOrdenados;
-    private javax.swing.JList<String> lstSemOrdem;
+    private java.awt.List lstOrdenados;
+    private java.awt.List lstSemOrdem;
     private javax.swing.JPanel pnlPrincipal;
     private javax.swing.JRadioButton rbtnCrescente;
     private javax.swing.JRadioButton rbtnDecrescente;
-    private javax.swing.JScrollPane scrpOrdenado;
-    private javax.swing.JScrollPane scrpSemOrdem;
     // End of variables declaration//GEN-END:variables
 }

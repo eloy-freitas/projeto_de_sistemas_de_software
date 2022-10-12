@@ -58,7 +58,7 @@ public class PrincipalPresenter {
                 try {
                     this.numerosSemOrdem = new ArrayList<>();
                     
-                    removeElementsJlist(
+                    removeElementsList(
                         this.ordenacaoView.getLstSemOrdem()
                     );
                     
@@ -66,12 +66,8 @@ public class PrincipalPresenter {
                     
                     setListModel(
                         this.numerosSemOrdem, 
-                        this.listModelSemOrdem
+                        this.ordenacaoView.getLstSemOrdem()
                     );
-                    
-                    this.ordenacaoView.
-                        getLstSemOrdem().
-                        setModel(this.listModelSemOrdem);
                     
                     this.ordenacaoView.getBtnOrdenar().setEnabled(true);
                     
@@ -92,7 +88,7 @@ public class PrincipalPresenter {
             
             this.numerosOrdenados = new ArrayList<>();
             
-            removeElementsJlist(
+            removeElementsList(
                 this.ordenacaoView.getLstOrdenados()
             );
             
@@ -109,12 +105,9 @@ public class PrincipalPresenter {
             
             setListModel(
                 this.numerosOrdenados, 
-                this.listModelOrdenados
+                this.ordenacaoView.getLstOrdenados()
             );
             
-            this.ordenacaoView.
-                getLstOrdenados().
-                setModel(this.listModelOrdenados);
         });
     }
     
@@ -127,8 +120,8 @@ public class PrincipalPresenter {
         this.listModelOrdenados = new DefaultListModel();
         this.metodosOrdenacao = new MetodosOrdenacaoService();
         this.metodo = new BubbleSortStrategy();
-        removeElementsJlist(this.ordenacaoView.getLstSemOrdem());
-        removeElementsJlist(this.ordenacaoView.getLstOrdenados());
+        removeElementsList(this.ordenacaoView.getLstSemOrdem());
+        //removeElementsList(this.ordenacaoView.getLstOrdenados());
         this.ordenacaoView.getCmbMetodo().removeAllItems();
         this.ordenacaoView.getLstOrdenados().removeAll();
         this.ordenacaoView.getRbtnCrescente().setSelected(true);
@@ -143,18 +136,14 @@ public class PrincipalPresenter {
             this.path = chooser.getSelectedFile().getAbsolutePath();
     }
     
-    private void setListModel(List<Double> numeros, DefaultListModel listModel){
-        int size = listModel.getSize();
-        if(size > 0){
-            listModel.removeAllElements();
-        }
+    private void setListModel(List<Double> numeros, java.awt.List list){
         for(double i : numeros){
-            listModel.addElement(i);
+            list.add(String.valueOf(i));
         }
     }
     
-    private void removeElementsJlist(JList jlist){
-        jlist.removeAll();
+    private void removeElementsList(java.awt.List list){
+        list.removeAll();
     }
     
     private Resultado ordenar(){
