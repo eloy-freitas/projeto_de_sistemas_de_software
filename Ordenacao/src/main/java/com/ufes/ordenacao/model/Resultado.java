@@ -12,15 +12,15 @@ import java.time.Duration;
  */
 public class Resultado {
     
-    public List<Integer> numeros;
+    public List<Double> numeros;
     public Duration tempo;
 
-    public Resultado(List<Integer> numeros, Duration tempo) {
+    public Resultado(List<Double> numeros, Duration tempo) {
         this.numeros = numeros;
         this.tempo = tempo;
     }
 
-    public List<Integer> getNumeros() {
+    public List<Double> getNumeros() {
         return numeros;
     }
 

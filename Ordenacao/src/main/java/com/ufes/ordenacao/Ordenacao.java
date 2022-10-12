@@ -1,7 +1,10 @@
 
 package com.ufes.ordenacao;
 
-import com.ufes.ordenacao.model.BubbleSort;
+import com.ufes.ordenacao.business.BubbleSortStrategy;
+import com.ufes.ordenacao.business.MetodoOrdenacaoStrategy;
+import com.ufes.ordenacao.model.Resultado;
+import com.ufes.ordenacao.business.SelectionSortStrategy;
 import com.ufes.ordenacao.presenter.PrincipalPresenter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,15 +20,27 @@ public class Ordenacao {
 
     public static void main(String[] args) {
         new PrincipalPresenter();
-        /*ArrayList<Integer> numeros
-             = new ArrayList<>(Arrays.asList(
-                     10, 5, 6, 7, 8, 2
+        /*
+        ArrayList<Double> numeros= new ArrayList<>(Arrays.asList(
+                   4.0
+                    ,73.0
+                    ,87.0
+                    ,7.0
+                    ,37.0
+                    ,1.0
+                    ,98.0
+                    ,10.0
+                    ,13.0
+                    ,14.0
+                    ,78.0
+
              ));
-        BubbleSort b = new BubbleSort();
-        List<Integer> result = b.ordenarDecrescente(numeros);
-        for (int i : result){
+        
+        MetodoOrdenacao b = new SelectionSort();
+        Resultado result = b.ordenarDecrescente(numeros);
+        for (double i : result.getNumeros()){
             System.out.println(i);
-        }*/
-         
+        }
+        */
     }
 }

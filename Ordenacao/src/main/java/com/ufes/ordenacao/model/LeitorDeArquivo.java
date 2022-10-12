@@ -16,17 +16,17 @@ import java.util.Scanner;
  */
 public class LeitorDeArquivo {
     private File arquivo;
-    private List<Integer> numerosSemOrdem;
+    private List<Double> numerosSemOrdem;
     
     public LeitorDeArquivo(String path) {
         this.arquivo = new File(path);
         this.numerosSemOrdem = new ArrayList<>();
     }
     
-    public List<Integer> getNumerosSemOrdem() throws FileNotFoundException{
+    public List<Double> getNumerosSemOrdem() throws FileNotFoundException{
         Scanner scanner = new Scanner(this.arquivo);
         while(scanner.hasNextInt()){
-            this.numerosSemOrdem.add(scanner.nextInt());
+            this.numerosSemOrdem.add(scanner.nextDouble());
         }
         return this.numerosSemOrdem;
     }

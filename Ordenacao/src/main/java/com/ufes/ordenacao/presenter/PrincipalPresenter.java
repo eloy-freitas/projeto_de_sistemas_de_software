@@ -1,9 +1,9 @@
 package com.ufes.ordenacao.presenter;
 
-import com.ufes.ordenacao.model.BubbleSort;
+import com.ufes.ordenacao.business.BubbleSortStrategy;
 import com.ufes.ordenacao.model.LeitorDeArquivo;
-import com.ufes.ordenacao.model.MetodoOrdenacao;
-import com.ufes.ordenacao.model.MetodosOrdenacaoCollection;
+import com.ufes.ordenacao.business.MetodoOrdenacaoStrategy;
+import com.ufes.ordenacao.service.MetodosOrdenacaoService;
 import com.ufes.ordenacao.model.Resultado;
 import com.ufes.ordenacao.view.OrdenacaoView;
 import java.io.FileNotFoundException;
@@ -21,12 +21,12 @@ public class PrincipalPresenter {
     private OrdenacaoView ordenacaoView;
     private String path;
     private LeitorDeArquivo leitorDeArquivo;
-    private List<Integer> numerosSemOrdem;
-    private List<Integer> numerosOrdenados;
+    private List<Double> numerosSemOrdem;
+    private List<Double> numerosOrdenados;
     private DefaultListModel listModelSemOrdem;
     private DefaultListModel listModelOrdenados;
-    private MetodosOrdenacaoCollection metodosOrdenacao;
-    private MetodoOrdenacao metodo;
+    private MetodosOrdenacaoService metodosOrdenacao;
+    private MetodoOrdenacaoStrategy metodo;
     private Resultado resultado;
     
     public PrincipalPresenter(){
@@ -39,10 +39,14 @@ public class PrincipalPresenter {
     }
     
     private void setCbmMetodo(){
-        for(MetodoOrdenacao m : this.metodosOrdenacao.getMetodos()){
+        for(MetodoOrdenacaoStrategy m : this.metodosOrdenacao.getMetodos()){
             this.ordenacaoView.getCmbMetodo().addItem(m.getNome());
         } 
     } 
+    
+    private String getMetodoOrdenacao(){
+        return this.ordenacaoView.getCmbMetodo().getSelectedItem().toString();
+    }
     
     private void setBtnCarregarArquivo(){
         this.ordenacaoView.getBtnCarregarArquivo().addActionListener(e -> {
@@ -81,6 +85,8 @@ public class PrincipalPresenter {
     
     private void setBtnOrdenar(){
         this.ordenacaoView.getBtnOrdenar().addActionListener(e -> {
+            System.out.println(getMetodoOrdenacao());
+            
             this.numerosOrdenados = new ArrayList<>();
             
             removeElementsJlist(
@@ -89,15 +95,12 @@ public class PrincipalPresenter {
             
             this.ordenacaoView.getLblTempo().setText("0");
             
-            this.resultado = ordenar(
-                this.numerosSemOrdem,
-                this.metodo
-            );
+            this.resultado = ordenar();
             
             this.numerosOrdenados = this.resultado.getNumeros();
             
             this.ordenacaoView.
-                    getLblTempo().
+                getLblTempo().
                     setText(this.resultado.getTempo());
             
             
@@ -119,8 +122,8 @@ public class PrincipalPresenter {
         this.path = null;
         this.listModelSemOrdem = new DefaultListModel();
         this.listModelOrdenados = new DefaultListModel();
-        this.metodosOrdenacao = new MetodosOrdenacaoCollection();
-        this.metodo = new BubbleSort();
+        this.metodosOrdenacao = new MetodosOrdenacaoService();
+        this.metodo = new BubbleSortStrategy();
         removeElementsJlist(this.ordenacaoView.getLstSemOrdem());
         removeElementsJlist(this.ordenacaoView.getLstOrdenados());
         this.ordenacaoView.getCmbMetodo().removeAllItems();
@@ -137,12 +140,12 @@ public class PrincipalPresenter {
             this.path = chooser.getSelectedFile().getAbsolutePath();
     }
     
-    private void setListModel(List<Integer> numeros, DefaultListModel listModel){
+    private void setListModel(List<Double> numeros, DefaultListModel listModel){
         int size = listModel.getSize();
         if(size > 0){
             listModel.removeAllElements();
         }
-        for(int i : numeros){
+        for(double i : numeros){
             listModel.addElement(i);
         }
     }
@@ -151,10 +154,20 @@ public class PrincipalPresenter {
         jlist.removeAll();
     }
     
-    private Resultado ordenar(List<Integer> numerosSemOrdem, MetodoOrdenacao metodo){
+    private Resultado ordenar(){
+        String metodo = getMetodoOrdenacao();
+        Boolean ordem = true;
         if (this.ordenacaoView.getRbtnCrescente().isSelected())
-            return metodo.ordenarCrescente(numerosSemOrdem);
+            ordem = true;
         else
-            return metodo.ordenarDecrescente(numerosSemOrdem);
+            ordem = false;
+        
+        return metodosOrdenacao.ordenar(
+            metodo, 
+            this.numerosSemOrdem, 
+            ordem
+        );
+  
     }
+    
 }
