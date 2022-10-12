@@ -4,10 +4,10 @@
  */
 package com.ufes.ordenacao.service;
 
-import com.ufes.ordenacao.business.BubbleSortStrategy;
-import com.ufes.ordenacao.business.MetodoOrdenacaoStrategy;
+import com.ufes.ordenacao.business.metodos_ordenacao.BubbleSortStrategy;
+import com.ufes.ordenacao.business.metodos_ordenacao.MetodoOrdenacaoStrategy;
 import com.ufes.ordenacao.model.Resultado;
-import com.ufes.ordenacao.business.SelectionSortStrategy;
+import com.ufes.ordenacao.business.metodos_ordenacao.SelectionSortStrategy;
 import java.util.ArrayList;
 import java.util.List;
 

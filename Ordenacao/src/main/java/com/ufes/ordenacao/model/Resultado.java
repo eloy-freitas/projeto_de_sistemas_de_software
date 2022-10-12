@@ -6,6 +6,7 @@ package com.ufes.ordenacao.model;
 
 import java.util.List;
 import java.time.Duration;
+import java.time.format.DateTimeFormatter;
 /**
  *
  * @author eloy
@@ -25,8 +26,10 @@ public class Resultado {
     }
 
     public String getTempo() {
+        double seconds = this.tempo.toMillis()/ Math.pow(10, 3);
+        String result = String.format("%05f segundos", seconds);
+        return result;
         
-        return this.tempo.toString().replace("PT", "");
     }
     
     

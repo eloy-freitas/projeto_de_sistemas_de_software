@@ -1,14 +1,17 @@
 package com.ufes.ordenacao.presenter;
 
-import com.ufes.ordenacao.business.BubbleSortStrategy;
-import com.ufes.ordenacao.model.LeitorDeArquivo;
-import com.ufes.ordenacao.business.MetodoOrdenacaoStrategy;
+import com.ufes.ordenacao.business.leitor_arquivo.LeitorArquivoService;
+import com.ufes.ordenacao.business.metodos_ordenacao.BubbleSortStrategy;
+import com.ufes.ordenacao.business.leitor_arquivo.LeitorDeArquivo;
+import com.ufes.ordenacao.business.metodos_ordenacao.MetodoOrdenacaoStrategy;
 import com.ufes.ordenacao.service.MetodosOrdenacaoService;
 import com.ufes.ordenacao.model.Resultado;
 import com.ufes.ordenacao.view.OrdenacaoView;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JList;
@@ -20,7 +23,7 @@ import javax.swing.JList;
 public class PrincipalPresenter {
     private OrdenacaoView ordenacaoView;
     private String path;
-    private LeitorDeArquivo leitorDeArquivo;
+    private LeitorArquivoService leitorArquivoService;
     private List<Double> numerosSemOrdem;
     private List<Double> numerosOrdenados;
     private DefaultListModel listModelSemOrdem;
@@ -30,12 +33,12 @@ public class PrincipalPresenter {
     private Resultado resultado;
     
     public PrincipalPresenter(){
-        iniciarView();
+        iniciarView();      
         setCbmMetodo();
         setBtnCarregarArquivo();
         setBtnOrdenar();
+         this.leitorArquivoService = new LeitorArquivoService();
         this.ordenacaoView.setVisible(true);
-        
     }
     
     private void setCbmMetodo(){
@@ -59,9 +62,7 @@ public class PrincipalPresenter {
                         this.ordenacaoView.getLstSemOrdem()
                     );
                     
-                    this.leitorDeArquivo = new LeitorDeArquivo(this.path);
-                    
-                    this.numerosSemOrdem = this.leitorDeArquivo.getNumerosSemOrdem();
+                    this.numerosSemOrdem = this.leitorArquivoService.processarArquivo(this.path);
                     
                     setListModel(
                         this.numerosSemOrdem, 
@@ -78,6 +79,8 @@ public class PrincipalPresenter {
                     throw new RuntimeException(
                             "Erro: arquivo com formato inválido"
                     );
+                } catch (Exception ex) {
+                    Logger.getLogger(PrincipalPresenter.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } 
         });

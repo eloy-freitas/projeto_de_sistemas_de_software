@@ -9,10 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,9 +17,8 @@ import java.util.logging.Logger;
  *
  * @author eloy
  */
-public class LeitorArquivoCsvHandler extends AbstractLeitorArquivoHandler{
-    
-    public LeitorArquivoCsvHandler() {
+public class LeitorArquivoTxtHandler extends AbstractLeitorArquivoHandler{
+    public LeitorArquivoTxtHandler() {
         super();
     }
     
@@ -38,11 +34,11 @@ public class LeitorArquivoCsvHandler extends AbstractLeitorArquivoHandler{
                 }
 
             }
-            System.out.println(".csv");
+            System.out.println(".txt");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(LeitorArquivoCsvHandler.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(LeitorArquivoCsvHandler.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LeitorArquivoTxtHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
         return this.numerosSemOrdem;
     }
@@ -51,13 +47,11 @@ public class LeitorArquivoCsvHandler extends AbstractLeitorArquivoHandler{
     public boolean verificarArquivo(String path) {
         File arquivo = new File(path);
         String nome = arquivo.getName();
-        if (arquivo.canRead() && nome.endsWith(".csv"))
+        if (arquivo.canRead() && nome.endsWith(".txt"))
             return true;
         else 
             return false;
     }
 
-
-    
     
 }
