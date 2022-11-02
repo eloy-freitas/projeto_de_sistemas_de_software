@@ -1,0 +1,8 @@
+/home/eloy/NetBeansProjects/ExercicioTransicaoEstados/src/main/java/com/ufes/exerciciotransicaoestados/factory/ArquivoTXTAdapterFactory.java
+/home/eloy/NetBeansProjects/ExercicioTransicaoEstados/src/main/java/com/ufes/exerciciotransicaoestados/ExercicioTransicaoEstados.java
+/home/eloy/NetBeansProjects/ExercicioTransicaoEstados/src/main/java/com/ufes/exerciciotransicaoestados/factory/ILogAdapterFactory.java
+/home/eloy/NetBeansProjects/ExercicioTransicaoEstados/src/main/java/com/ufes/pessoas/adaptador/ArquivoXMLAdapter.java
+/home/eloy/NetBeansProjects/ExercicioTransicaoEstados/src/main/java/com/ufes/pessoas/adaptador/ArquivoTXTAdapter.java
+/home/eloy/NetBeansProjects/ExercicioTransicaoEstados/src/main/java/com/ufes/pessoas/adaptado/FileUtil.java
+/home/eloy/NetBeansProjects/ExercicioTransicaoEstados/src/main/java/com/ufes/pessoas/adaptador/IArquivoAdapter.java
+/home/eloy/NetBeansProjects/ExercicioTransicaoEstados/src/main/java/com/ufes/pessoas/adaptado/XMLWriter.java

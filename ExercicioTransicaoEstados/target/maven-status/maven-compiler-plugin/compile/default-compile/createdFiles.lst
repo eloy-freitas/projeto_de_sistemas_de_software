@@ -1,0 +1,8 @@
+com/ufes/pessoas/adaptador/IArquivoAdapter.class
+com/ufes/exerciciotransicaoestados/factory/ArquivoTXTAdapterFactory.class
+com/ufes/exerciciotransicaoestados/ExercicioTransicaoEstados.class
+com/ufes/pessoas/adaptador/ArquivoXMLAdapter.class
+com/ufes/exerciciotransicaoestados/factory/ILogAdapterFactory.class
+com/ufes/pessoas/adaptador/ArquivoTXTAdapter.class
+com/ufes/pessoas/adaptado/FileUtil.class
+com/ufes/pessoas/adaptado/XMLWriter.class
