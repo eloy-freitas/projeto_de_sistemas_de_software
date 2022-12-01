@@ -17,9 +17,18 @@ public class Zelador {
     
     public void adicionarMemento(IProdutoMemento produtoMemento){
         int size = this.historico.size() - 1;
+        /*
+            remove todos os elementos depois do index
+        */
         while(index < this.historico.size() - 1){
             this.historico.pollLast();
         }
+        /*
+            remove o primeiro elemento caso a lista ultrapasse o tamanho de 20
+        */
+        if(size == 5)
+            this.historico.pollFirst();
+        
         this.historico.add(produtoMemento);
         this.index = this.historico.size() - 1;
     }
