@@ -2,7 +2,7 @@ package com.ufes.atividadememento;
 
 import com.ufes.atividadememento.business.IProdutoMemento;
 import java.util.LinkedList;
-import java.util.List;
+
 
 
 public class Zelador {
@@ -17,9 +17,18 @@ public class Zelador {
     
     public void adicionarMemento(IProdutoMemento produtoMemento){
         int size = this.historico.size() - 1;
-        while(index < this.historico.size() - 1){
+        /*
+            remove todos os elementos depois do index
+        */
+        while(index < size){
             this.historico.pollLast();
         }
+        /*
+            remove o primeiro elemento caso a lista ultrapasse o tamanho de 20
+        */
+        if(size == 5 && index != 0)
+            this.historico.pollFirst();
+        
         this.historico.add(produtoMemento);
         this.index = this.historico.size() - 1;
     }

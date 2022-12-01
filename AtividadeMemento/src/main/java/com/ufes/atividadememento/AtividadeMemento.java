@@ -9,21 +9,34 @@ public class AtividadeMemento {
         Produto p = new Produto("mouse", 10);
         System.out.println(p.toString());
         z.adicionarMemento(p.makeSnapshot());
-        p.setNome("teclado");
-        p.setValor(200);
+        p.setValor(1);
+        z.adicionarMemento(p.makeSnapshot());
+        System.out.println(p.toString());
+        p.setValor(2);
+        z.adicionarMemento(p.makeSnapshot());
+        System.out.println(p.toString());
+        p.setValor(3);
+        z.adicionarMemento(p.makeSnapshot());
+        System.out.println(p.toString());
+        p.setValor(4);
+        z.adicionarMemento(p.makeSnapshot());
+        System.out.println(p.toString());
+        p.setValor(5);
+        z.adicionarMemento(p.makeSnapshot());
+        System.out.println(p.toString());
+        p.setValor(6);
+        System.out.println(p.toString());
         z.adicionarMemento(p.makeSnapshot());
         System.out.println(p.toString());
         p.restore(z.undo());
         System.out.println(p.toString());
-        p.restore(z.undo());
-        System.out.println(p.toString());
-        p.setNome("headset");
-        p.setValor(300);
-        z.adicionarMemento(p.makeSnapshot());
         p.restore(z.undo());
         System.out.println(p.toString());
         p.restore(z.redo());
         System.out.println(p.toString());
+        p.restore(z.redo());
+        System.out.println(p.toString());
+        
         
     }
 }
