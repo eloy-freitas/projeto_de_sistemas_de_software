@@ -23,9 +23,9 @@ public class Zelador {
             this.historico.pollLast();
         }
         /*
-            remove o primeiro elemento caso a lista ultrapasse o tamanho de 20
+            remove o primeiro elemento caso a lista ultrapasse o tamanho de 5
         */
-        if(this.historico.size() - 1 == 5)
+        if(this.historico.size() == 5)
             this.historico.pollFirst();
         
         this.historico.add(produtoMemento);
@@ -39,7 +39,6 @@ public class Zelador {
             this.index -= 1;
         IProdutoMemento memento = this.historico.get(this.index);
         
-        
         return memento; 
     }
     
@@ -48,6 +47,7 @@ public class Zelador {
             throw new RuntimeException("Sem histórico de mementos");
         if(this.index < this.historico.size() - 1)
             this.index += 1;
+        
         IProdutoMemento memento = this.historico.get(this.index);
         
         return memento;

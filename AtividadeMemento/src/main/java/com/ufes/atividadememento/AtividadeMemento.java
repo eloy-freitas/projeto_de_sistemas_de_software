@@ -32,7 +32,7 @@ public class AtividadeMemento {
         System.out.println(p.toString());
         p.restore(z.undo());
         System.out.println(p.toString());
-        p.restore(z.redo());
+        p.restore(z.undo());
         System.out.println(p.toString());
         p.restore(z.redo());
         System.out.println(p.toString());
