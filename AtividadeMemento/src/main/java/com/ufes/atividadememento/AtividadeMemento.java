@@ -5,7 +5,7 @@ import com.ufes.atividadememento.business.Produto;
 public class AtividadeMemento {
 
     public static void main(String[] args) {
-        Zelador z = new Zelador();
+        Zelador z = Zelador.getInstace();
         Produto p = new Produto("mouse", 10);
         System.out.println(p.toString());
         z.adicionarMemento(p.makeSnapshot());
